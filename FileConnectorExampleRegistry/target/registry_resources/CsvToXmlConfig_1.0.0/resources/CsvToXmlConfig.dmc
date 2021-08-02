@@ -1,0 +1,26 @@
+map_S_root_S_test = function(){ 
+var outputtest={};
+
+var count_i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1 = 0;
+outputtest =  {};
+outputtest.information =  {};
+outputtest.information.people =  {};
+outputtest.information.people.person =  [];
+
+for(i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1 in inputroot){
+outputtest.information.people.person[count_i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1] =  {};
+outputtest.information.people.person[count_i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1].name = inputroot[i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1].Name;
+outputtest.information.people.person[count_i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1].age = Number(inputroot[i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1].Age);
+outputtest.information.people.person[count_i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1].company = inputroot[i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1].Company;
+
+count_i_inputroot_cda273f8_dd89_41e2_8f0b_b2e4d1a976e1++;
+}
+return outputtest;
+};
+
+
+
+
+
+
+

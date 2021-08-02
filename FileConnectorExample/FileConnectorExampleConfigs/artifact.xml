@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="TestAPI" groupId="com.example.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/TestAPI.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="FileConnectorFaultSeq" groupId="com.example.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/FileConnectorFaultSeq.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+    <artifact name="myLocalFileConnection" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\myLocalFileConnection.xml</file>
+    </artifact>
+</artifacts>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/fileTest" name="TestAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <log description="XML Request" level="full"/>
+            <datamapper config="gov:datamapper/xmlToCsvConfig.dmc" description="XML to CSV Transform" inputSchema="gov:datamapper/xmlToCsvConfig_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/xmlToCsvConfig_outputSchema.json" outputType="CSV" xsltStyleSheet="gov:datamapper/xmlToCsvConfig_xsltStyleSheet.xml"/>
+            <enrich description="Save Payload">
+                <source clone="true" type="body"/>
+                <target property="CONTENT" type="property"/>
+            </enrich>
+            <file.checkExist configKey="myLocalFileConnection">
+                <path>/dataCollection/employees/employees.csv</path>
+                <includeResultTo>Message Body</includeResultTo>
+            </file.checkExist>
+            <log description="After Check Exist" level="full"/>
+            <filter description="checkExistResult" regex="true" source="//checkExistResult/fileExists/text()">
+                <then>
+                    <log description="File Exists" level="full">
+                        <property name="Filter Condition" value="The filter condition is TRUE"/>
+                    </log>
+                </then>
+                <else>
+                    <log description="File Doesnt exist" level="full"/>
+                    <file.write configKey="myLocalFileConnection">
+                        <filePath>/dataCollection/employees/employees.csv</filePath>
+                        <contentOrExpression>Name,Age,Company</contentOrExpression>
+                        <mimeType>Automatic</mimeType>
+                        <compress>false</compress>
+                        <writeMode>Create New</writeMode>
+                        <enableStreaming>false</enableStreaming>
+                        <appendNewLine>true</appendNewLine>
+                        <enableLock>false</enableLock>
+                        <includeResultTo>Message Body</includeResultTo>
+                    </file.write>
+                </else>
+            </filter>
+            <enrich description="put back saved payload">
+                <source clone="true" property="CONTENT" type="property"/>
+                <target type="body"/>
+            </enrich>
+            <file.write configKey="myLocalFileConnection">
+                <filePath>/dataCollection/employees/employees.csv</filePath>
+                <mimeType>Automatic</mimeType>
+                <compress>false</compress>
+                <writeMode>Append</writeMode>
+                <appendPosition>2</appendPosition>
+                <enableStreaming>false</enableStreaming>
+                <appendNewLine>true</appendNewLine>
+                <enableLock>false</enableLock>
+                <includeResultTo>Message Body</includeResultTo>
+            </file.write>
+            <file.read configKey="myLocalFileConnection">
+                <path>/dataCollection/employees/employees.csv</path>
+                <readMode>Starting From Line</readMode>
+                <startLineNum>2</startLineNum>
+                <endLineNum>0</endLineNum>
+                <lineNum>0</lineNum>
+                <contentType>text/plain</contentType>
+                <includeResultTo>Message Body</includeResultTo>
+                <enableStreaming>false</enableStreaming>
+                <enableLock>false</enableLock>
+            </file.read>
+            <datamapper config="gov:datamapper/CsvToXmlConfig.dmc" description="CSV To XML Transform" inputSchema="gov:datamapper/CsvToXmlConfig_inputSchema.json" inputType="CSV" outputSchema="gov:datamapper/CsvToXmlConfig_outputSchema.json" outputType="XML" xsltStyleSheet="gov:datamapper/CsvToXmlConfig_xsltStyleSheet.xml"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <sequence key="FileConnectorFaultSeq"/>
+        </faultSequence>
+    </resource>
+</api>
