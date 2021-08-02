@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="Calculator" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <switch source="get-property('Action')">
+                <case regex="http://tempuri.org/Multiply">
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <message xmlns="">Action http://tempuri.org/Multiply is not implemented</message>
+                        </format>
+                        <args/>
+                    </payloadFactory>
+                </case>
+                <case regex="http://tempuri.org/Subtract">
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <message xmlns="">Action http://tempuri.org/Subtract is not implemented</message>
+                        </format>
+                        <args/>
+                    </payloadFactory>
+                </case>
+                <case regex="http://tempuri.org/Add">
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <message xmlns="">Action http://tempuri.org/Add is not implemented</message>
+                        </format>
+                        <args/>
+                    </payloadFactory>
+                </case>
+                <case regex="http://tempuri.org/Divide">
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <message xmlns="">Action http://tempuri.org/Divide is not implemented</message>
+                        </format>
+                        <args/>
+                    </payloadFactory>
+                </case>
+                <case regex=".*+">
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <message xmlns="">Action not implemented</message>
+                        </format>
+                        <args/>
+                    </payloadFactory>
+                </case>
+                <default/>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <publishWSDL preservePolicy="true" uri="http://www.dneonline.com/calculator.asmx?WSDL"/>
+</proxy>
