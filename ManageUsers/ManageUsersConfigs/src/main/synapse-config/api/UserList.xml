@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/services" name="UserList" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/users?page={page}">
+        <inSequence>
+            <log description="AUDIT_ENTRY" level="custom">
+                <property expression="get-property('uri.var.page')" name="Page"/>
+            </log>
+            <send>
+                <endpoint key="GetUserInfo"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <log description="AUDIT_EXIT" level="custom">
+                <property expression="json-eval($)" name="JSON-PAYLOAD"/>
+            </log>
+            <send/>
+        </outSequence>
+        <faultSequence>
+            <log description="AUDIT_ERROR" level="full"/>
+        </faultSequence>
+    </resource>
+    <resource methods="POST" uri-template="/users">
+        <inSequence>
+            <log description="AUDIT_ENTRY" level="custom">
+                <property expression="json-eval($)" name="Request Payload"/>
+            </log>
+            <send>
+                <endpoint key="CreateUser"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <log description="AUDIT_EXIT" level="custom">
+                <property expression="json-eval($)" name="Response Payload"/>
+            </log>
+            <send/>
+        </outSequence>
+        <faultSequence>
+            <log description="AUDIT_ERROR" level="full"/>
+        </faultSequence>
+    </resource>
+    <resource methods="POST" uri-template="/numberconversion">
+        <inSequence>
+            <log description="AUDIT-ENTRY" level="custom">
+                <property expression="json-eval($)" name="****REQUEST PAYLOAD****"/>
+            </log>
+            <payloadFactory description="MapRequest" media-type="xml">
+                <format>
+                    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+                        <soap:Body>
+                            <NumberToDollars xmlns="http://www.dataaccess.com/webservicesserver/">
+                                <dNum>$1</dNum>
+                            </NumberToDollars>
+                        </soap:Body>
+                    </soap:Envelope>
+                </format>
+                <args>
+                    <arg evaluator="json" expression="$.inNum"/>
+                </args>
+            </payloadFactory>
+            <log description="AUDIT_TEMPEXIT">
+                <property expression="/soap:Envelope" name="****BackEnd Request****" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            </log>
+            <property description="SOAP ACTION" name="Action" scope="default" type="STRING" value="&quot;&quot;"/>
+            <send>
+                <endpoint key="NumberToDollars"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <log description="AUDIT_REENTRY" level="custom">
+                <property expression="/soap:Envelope" name="****BACKEND RESPONSE PAYLOAD****" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            </log>
+            <payloadFactory description="MapRespnse" media-type="json">
+                <format>{&#xd;
+   "NumberToDollarsResult": $1&#xd;
+}</format>
+                <args>
+                    <arg evaluator="xml" expression="/soap:Envelope/soap:Body/m:NumberToDollarsResponse/m:NumberToDollarsResult" xmlns:m="http://www.dataaccess.com/webservicesserver/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+                </args>
+            </payloadFactory>
+            <log description="AUDIT_EXIT" level="custom">
+                <property expression="json-eval($)" name="****RESPONSE PAYLOAD****"/>
+            </log>
+            <send/>
+        </outSequence>
+        <faultSequence>
+            <log description="AUDIT_ERROR" level="full"/>
+        </faultSequence>
+    </resource>
+</api>

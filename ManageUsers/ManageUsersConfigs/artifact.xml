@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="GetUserInfo" groupId="com.ayanda.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/GetUserInfo.xml</file>
+    </artifact>
+    <artifact name="UserList" groupId="com.ayanda.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/UserList.xml</file>
+    </artifact>
+    <artifact name="CreateUser" groupId="com.ayanda.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/CreateUser.xml</file>
+    </artifact>
+    <artifact name="NumberToDollars" groupId="com.ayanda.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/NumberToDollars.xml</file>
+    </artifact>
+</artifacts>
